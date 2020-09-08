@@ -16,4 +16,37 @@ class loginController extends Controller
     {
         return view('login');
     }
+    function verify(Request $request){
+
+
+
+            $data = DB::table('employeers')
+                ->where('username', $request->username)
+                ->where('password', $request->password)
+                ->get();
+            if (count($data) > 0) {
+                $request->session()->put('username', $request->username);
+
+                if ($data[0]->username == 'admin') {
+                    $request->session()->put('type', 'admin');
+                }
+                else {
+                      $request->session()->put('type','employer');
+                }
+
+                       return redirect()->route('employer.index');
+            } else {
+                $request->session()->flash('msg', 'user invalid');
+                return redirect()->route('login');
+            }
+        }
+
+
+}
+
+
+
+
+
+
 }
