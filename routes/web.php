@@ -25,3 +25,5 @@ Route::get('/login', 'loginController@loginView');
 Route::post('/login',['uses'=>'LoginController@verify']);
 
 Route::resource('employer','EmployeerController');
+
+Route::middleware('sess')->middleware('type')->resource('employer','EmployeerController');

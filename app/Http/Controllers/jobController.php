@@ -38,8 +38,9 @@ class JobController extends Controller
 
 
     public function update(Request $request, job $job)
-    {
 
+    {
+           
     }
 
 
