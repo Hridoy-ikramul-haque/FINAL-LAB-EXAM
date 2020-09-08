@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', 'loginController@index');
+// User Routes
 
-Route::post('/login' , 'loginController@validations') ;
+Route::get('/login', 'loginController@loginView');
+Route::post('/login',['uses'=>'LoginController@verify']);
 
-
-
-Route :: get ('/home' , "HomeController@homeindex") ;
-Route :: post('/home' , "HomeController@homevalidation") ;
+Route::resource('employer','EmployeerController');
