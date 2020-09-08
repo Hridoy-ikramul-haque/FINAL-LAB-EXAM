@@ -8,19 +8,12 @@ namespace App\Http\Controllers ;
 
 use Illuminate\Http\Request ;//request object er value access korar jonno use kora hoi .
 
-class loginController extends Controller {
-    function index(){
-        return view ('login') ;
-    }
 
-    function validations(Request $request){
-        // echo $request->username ;
-        // echo $request-> password ;
-        echo "your name:".$request->username;
-        echo "Your password:".$request->password ;
 
-        if($request->username == $request->password){
-            return redirect('/home') ;
-        }
+class loginController extends Controller
+{
+    public function loginView()
+    {
+        return view('login');
     }
 }
